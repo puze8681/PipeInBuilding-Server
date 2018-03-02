@@ -9,7 +9,7 @@ app.post('/', (req, res) => {
     var History = new History();
     var token = rndString.generate(6)
     History.status = req.body.status
-    History.startTime = req.body.startTime
+    History.startTime = Date.now()
     History.token = token
     History.save()
         .then(
@@ -38,7 +38,8 @@ app.put('/:token', (req, res)=>{
         if(err) return res.status(500).json({ error: 'database failure' });
         else if(!histories) return res.status(404).json({ error: 'book not found' });
         else{
-            histories.endtime = req.body.endtime
+            histories.status = req.body.status
+            histories.endtime = Date.now()
             histories.pipeEnergy = req.body.pipeEnergy
             histories.energy = req.body.energy
             var time = histories.startTime - histories.endTime
@@ -49,7 +50,7 @@ app.put('/:token', (req, res)=>{
 
             histories.save(function(err){
                 if(err) res.status(500).json({error: 'failed to update'});
-                res.json({message: 'book updated', body: histories);
+                res.json({message: 'book updated', body: histories});
             });
         }
     })

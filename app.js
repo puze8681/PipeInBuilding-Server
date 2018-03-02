@@ -8,7 +8,6 @@ const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express');
 
 var index = require('./routes/index');
-
 var app = express();
 
 // view engine setup

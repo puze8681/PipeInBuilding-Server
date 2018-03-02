@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const DB_NAME = "PipeInBuilding"
 
-var db = mongoose.connect('mongodb://localhost/'+DB_NAME).exec()
+var db = mongoose.connect('mongodb://localhost/'+DB_NAME)
     .then(()=>{
         return server.start();
     })
