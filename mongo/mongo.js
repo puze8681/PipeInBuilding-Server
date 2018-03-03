@@ -3,7 +3,8 @@ const DB_NAME = "PipeInBuilding"
 
 var db = mongoose.connect('mongodb://localhost/'+DB_NAME)
     .then(()=>{
-        return server.start();
+        // return server.start();
+        console.log('DB Connect Success')
     })
     .catch(err=>{
         console.error('App starting error:', err.stack);
